@@ -21,7 +21,7 @@ There are two types of XPath:
 ## 2. How to search dynamic elements on the webpage?
 We can use contains or stars-with method to find dynamic elements.
 
-1. contains() is a method used in XPath expression.
+### 1. contains() is a method used in XPath expression.
 
 //tagname[contains(@attribute,'value')]
 
@@ -31,7 +31,7 @@ We can use contains or stars-with method to find dynamic elements.
 
 //div[contains(text(),'Selenium Online Trainings')]
 
-2. starts-with is a function used for finding the web element whose attribute value gets changed on refresh or by other dynamic operations on the webpage.
+### 2. starts-with is a function used for finding the web element whose attribute value gets changed on refresh or by other dynamic operations on the webpage.
 
 For example -: Suppose the ID of particular element changes dynamically like:
 
