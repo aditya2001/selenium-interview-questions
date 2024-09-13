@@ -77,7 +77,7 @@ Xpath=//input[starts-with(@id,'message')]
 
 ## 8. How to find count of links on the webpage?
 ```java
-driver.get("https://www.google.com)
+driver.get("https://www.google.com")
 List<WebElement> ls = driver.findElements(By.tagName("a"));
 System.out.println(ls.size());
     for(WebElement element : ls){
@@ -85,4 +85,29 @@ System.out.println(ls.size());
    }
 ```
 
-## 9. 
+## 9. How to check logo available or not ?
+```java
+driver.get("https://www.google.com");
+WebElement element = driver.findElement(By.xpath("//*[@name='logo']"));
+boolean logoPresent = element.isDisplayed();
+assert.assertTrue(logoPresent);
+```
+1. assertTrue(boolean condition): This Assertion verifies the Boolean value returned by the condition. If the Boolean value is true, then the assertion passes the test case.
+2. assertEquals(String ExpectedTitle, String ActualTitle);
+3. assertNotNull(String titleValue);
+
+## 10. How to get element attribute value in selenium ?
+```java
+driver.get("https://www.google.com");
+WebElement element = driver.findElement(By.id("uid"));
+String str = element.getAttribute("value");
+System.out.println(str);
+```
+
+## 11. How to check page title in selenium ?
+```java
+driver.get("https://www.google.com");
+WebElement element = driver.findElement(By.id("uid"));
+String str = element.getTitle();
+assertEquals(str,"Facebook");
+```
