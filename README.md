@@ -139,3 +139,19 @@ alert.sendKeys("Yes");
 alert.accept();
 driver.switchTo.defaultContent();
 ```
+
+## 13. What are xpath axis?
+
+```java
+  <div>
+   <span>
+    <input class="is_required" type="password" id="passwd" name="passwd" value="">
+   </span>
+  </div>
+```
+### 1. Parent -> Selects the parent of the current node
+//input[@id='passwd']//parent::span
+
+### 2. Ancestor -> The ancestor axis selects all ancestors element (grandparent, parent, etc.) of the current node as shown in the below screen.
+//input[@id='passwd']//ancestor::div
+
