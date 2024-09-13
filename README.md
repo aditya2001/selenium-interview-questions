@@ -55,27 +55,23 @@ There are two types of XPath:
 We can use contains or stars-with method to find dynamic elements.
 
 ### 1. contains() is a method used in XPath expression.
-
+```java
 //tagname[contains(@attribute,'value')]
-
 //input[contains(@name,'uid')]
-
 <div class="new-training">Selenium Online Trainings</div>
-
 //div[contains(text(),'Selenium Online Trainings')]
+```
 
 ### 2. starts-with is a function used for finding the web element whose attribute value gets changed on refresh or by other dynamic operations on the webpage.
 
 For example -: Suppose the ID of particular element changes dynamically like:
-
+```java
 Id=” message12″
-
 Id=” message345″
 
 <input id="message123">user id must not be blank</label>
-
 Xpath=//input[starts-with(@id,'message')]
-
+```
 ## 7. Difference between findElement and findElements in Selenium?
 ![img.png](img.png)
 
