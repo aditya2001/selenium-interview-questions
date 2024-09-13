@@ -1,17 +1,50 @@
 # selenium-interview-questions
 
+## 1. What are the various WebDriver methods in selenium?
+1. driver.get(url)
+2. driver.switchTo()
+3. driver.getTitle()
+4. driver.getWindowHandles()
+5. driver.getWindowHandle()
+6. driver.close()
+7. driver.quit()
+8. driver.findElement()
+9. driver.findElement(By.xpath("//input[@name='uid']"))
+
+## 2. What are WebElement methods?
+Anything present on the webpage is called as webelement.Like checkbox, textbox, buttons etc
+
+Before performing any action on the elements.We have to perform the following steps
+1. Inspect the element.
+2. Locate the element.
+3. Find the element.
+4. perform action on the element.
+
+### Methods of WebElement interface-
+
+
+## 2. Difference between close() and quit() method ?
+1. close is used to close current browser window
+2. quit is used to close all browser windows.
+
+## 3. How to initialize driver to run on different browsers ?
+Here we are creating an object of child class and assigning to parent reference variable. This is upcasting.
+1. WebDriver driver = New ChromeDriver();
+2. WebDriver driver = new FirefoxDriver();
+
 ## 1. What is a Xpath?
 Xpath is an expression or syntax to locate an element on the webpage.
 
 Xpath=//tagname[@attribute='value']
 
-Different ways to find elements on the web page.
-1. ID - To find the element by ID of the element
-2. Classname - To find the element by Classname of the element
-3. Name - To find the element by name of the element
-4. Link text - To find the element by text of the link
-5. XPath - XPath required for finding the dynamic element and traverse between various elements of the web page
-6. CSS path -	CSS path also locates elements having no name, class or ID.
+Different ways to find elements on the web page. There are 8 types of locators and all the locators take string as an argument.
+1. Id(String)
+2. name(String)
+3. className(String)
+4. tagName(String)
+5. linkText(String)
+6. partialLinkTest(String)
+7. xpath(String)
 
 There are two types of XPath:
 
