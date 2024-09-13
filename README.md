@@ -80,14 +80,13 @@ Xpath=//input[starts-with(@id,'message')]
 ![img.png](img.png)
 
 ## 8. How to find count of links on the webpage?
+```java
 driver.get("https://www.google.com)
-
 List<WebElement> ls = driver.findElements(By.tagName("a"));
-
 System.out.println(ls.size());
-
     for(WebElement element : ls){
     System.out.println(element.getAttribute("href"));
    }
+```
 
 ## 9. 
