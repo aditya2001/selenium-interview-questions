@@ -1,6 +1,7 @@
 # selenium-interview-questions
 
 ## 1. What are the various WebDriver methods in selenium?
+```java
 1. driver.get(url)
 2. driver.switchTo()
 3. driver.getTitle()
@@ -10,6 +11,7 @@
 7. driver.quit()
 8. driver.findElement()
 9. driver.findElement(By.xpath("//input[@name='uid']"))
+```
 
 ## 2. What are WebElement methods?
 Anything present on the webpage is called as webelement.Like checkbox, textbox, buttons etc
@@ -29,8 +31,10 @@ Before performing any action on the elements.We have to perform the following st
 
 ## 4. How to initialize driver to run on different browsers ?
 Here we are creating an object of child class and assigning to parent reference variable. This is upcasting.
+```java
 1. WebDriver driver = New ChromeDriver();
 2. WebDriver driver = new FirefoxDriver();
+```
 
 ## 5. What is a Xpath?
 Xpath is an expression or syntax to locate an element on the webpage.
@@ -38,6 +42,7 @@ Xpath is an expression or syntax to locate an element on the webpage.
 Xpath=//tagname[@attribute='value']
 
 Different ways to find elements on the web page. There are 8 types of locators and all the locators take string as an argument.
+```java
 1. Id(String)
 2. name(String)
 3. className(String)
@@ -45,7 +50,7 @@ Different ways to find elements on the web page. There are 8 types of locators a
 5. linkText(String)
 6. partialLinkTest(String)
 7. xpath(String)
-
+```
 There are two types of XPath:
 
 1) Absolute XPath - Starts from parent node of DOM, all the way to destination. The key characteristic of XPath is that it begins with the single forward slash(/) ,which means you can select the element from the root node.
@@ -157,5 +162,8 @@ Xpath axis are used to find complex elements.
 ### 2. Ancestor -> The ancestor axis selects all ancestors element (grandparent, parent, etc.) of the current node as shown in the below screen.
 //input[@id='passwd']//ancestor::div
 
-### 3. Following-sibling -> Select the following siblings of the context node. Siblings are at the same level of the current node.
+### 3. Following-sibling -> Selects the following siblings of the context node. Siblings are at the same level of the current node.
 //label[text()='Password']//following-sibling::span
+
+### 4. Following -> Selects all the elements following the current node.
+//label[text()='Password']//following::input
