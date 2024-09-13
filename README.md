@@ -107,7 +107,7 @@ System.out.println(str);
 ## 11. How to check page title in selenium ?
 ```java
 driver.get("https://www.google.com");
-WebElement element = driver.findElement(By.id("uid"));
-String str = element.getTitle();
+String str = driver.getTitle();
 assertEquals(str,"Facebook");
 ```
+## 12. 
