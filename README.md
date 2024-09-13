@@ -141,12 +141,14 @@ driver.switchTo.defaultContent();
 ```
 
 ## 13. What are xpath axis?
+Xpath axis are used to find complex elements.
 
 ```java
-  <div>
-   <span>
-    <input class="is_required" type="password" id="passwd" name="passwd" value="">
-   </span>
+  <div class="group">
+    <label>Password</>
+    <span>
+     <input class="is_required" type="password" id="passwd" name="passwd" value="">
+    </span>
   </div>
 ```
 ### 1. Parent -> Selects the parent of the current node
@@ -155,3 +157,5 @@ driver.switchTo.defaultContent();
 ### 2. Ancestor -> The ancestor axis selects all ancestors element (grandparent, parent, etc.) of the current node as shown in the below screen.
 //input[@id='passwd']//ancestor::div
 
+### 3. Following-sibling -> Select the following siblings of the context node. Siblings are at the same level of the current node.
+//label[text()='Password']//following-sibling::span
