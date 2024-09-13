@@ -110,4 +110,32 @@ driver.get("https://www.google.com");
 String str = driver.getTitle();
 assertEquals(str,"Facebook");
 ```
-## 12. 
+
+In our automation framework we have a method getPageTitle() in BasePage abstract class which is common for all the page classes. This promotes reusability.
+```java
+public String getPageTitle(){
+System.out.println("Returning Title");
+return driver.getTitle();
+}
+```
+## 12. How to handle alerts in selenium?
+There are 3 types of javascript popup
+1. Alert - contains only ok button
+2. Confirmation - contains ok and cancel button
+3. Prompt - also contains text
+We cannot move the popup.We cannot inspect the popup.
+
+```java
+driver.get("https://www.google.com");
+Alert alert = driver.switchTo.alert();
+alert.accept();
+driver.switchTo.defaultContent();
+```
+Prompt alert
+```java
+driver.get("https://www.google.com");
+Alert alert = driver.switchTo.alert();
+alert.sendKeys("Yes");
+alert.accept();
+driver.switchTo.defaultContent();
+```
