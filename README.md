@@ -23,16 +23,16 @@ Before performing any action on the elements.We have to perform the following st
 ### Methods of WebElement interface-
 
 
-## 2. Difference between close() and quit() method ?
+## 3. Difference between close() and quit() method ?
 1. close is used to close current browser window
 2. quit is used to close all browser windows.
 
-## 3. How to initialize driver to run on different browsers ?
+## 4. How to initialize driver to run on different browsers ?
 Here we are creating an object of child class and assigning to parent reference variable. This is upcasting.
 1. WebDriver driver = New ChromeDriver();
 2. WebDriver driver = new FirefoxDriver();
 
-## 1. What is a Xpath?
+## 5. What is a Xpath?
 Xpath is an expression or syntax to locate an element on the webpage.
 
 Xpath=//tagname[@attribute='value']
@@ -51,7 +51,7 @@ There are two types of XPath:
 1) Absolute XPath - Starts from parent node of DOM, all the way to destination. The key characteristic of XPath is that it begins with the single forward slash(/) ,which means you can select the element from the root node.
 2) Relative XPath - can start from anywhere in the DOM. It starts with double forward slash (//). It can search elements anywhere on the webpage.
 
-## 2. How to search dynamic elements on the webpage?
+## 6. How to search dynamic elements on the webpage?
 We can use contains or stars-with method to find dynamic elements.
 
 ### 1. contains() is a method used in XPath expression.
@@ -75,3 +75,19 @@ Id=” message345″
 <input id="message123">user id must not be blank</label>
 
 Xpath=//input[starts-with(@id,'message')]
+
+## 7. Difference between findElement and findElements in Selenium?
+![img.png](img.png)
+
+## 8. How to find count of links on the webpage?
+driver.get("https://www.google.com)
+
+List<WebElement> ls = driver.findElements(By.tagName("a"));
+
+System.out.println(ls.size());
+
+    for(WebElement element : ls){
+    System.out.println(element.getAttribute("href"));
+   }
+
+## 9. 
