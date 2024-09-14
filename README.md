@@ -32,7 +32,7 @@ Before performing any action on the elements.We have to perform the following st
 ## 4. How to initialize driver to run on different browsers ?
 Here we are creating an object of child class and assigning to parent reference variable. This is upcasting.
 ```java
-1. WebDriver driver = New ChromeDriver();
+1. WebDriver driver = new ChromeDriver();
 2. WebDriver driver = new FirefoxDriver();
 ```
 
