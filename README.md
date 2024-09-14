@@ -43,7 +43,7 @@ Xpath=//tagname[@attribute='value']
 
 Different ways to find elements on the web page. There are 8 types of locators and all the locators take string as an argument.
 ```java
-1. Id(String)
+1. id(String)
 2. name(String)
 3. className(String)
 4. tagName(String)
