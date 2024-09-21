@@ -239,7 +239,7 @@ NoSuchElementException is thrown by the findElement() method in Selenium WebDriv
 
 We can handle this using contains or starts-with method.
 
-2`element not yet loaded` -> Some elements take time to load as there can be synchronization issues between app and selenium script and therefore we may get no such element exception.
+2. `element not yet loaded` -> Some elements take time to load as there can be synchronization issues between app and selenium script and therefore we may get no such element exception.
 
 We can handle this using dynamic wait time like explicit wait time.
 ```java
@@ -248,15 +248,15 @@ WebElement login=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//
 login.click();
 ```
 
-3`Incorrect locators`- fix the locator.
+3. `Incorrect locators`- fix the locator.
 
-4. Use try catch block -> Surround the code block which you feel may throw a NoSuchElementException with a try-catch block.
+4. `Use try catch block` -> Surround the code block which you feel may throw a NoSuchElementException with a try-catch block.
 
 5. Switch to Frame -> Some web elements are inside frame/ iframe and it is only discovered when you encounter an exception. Always check if the element is inside any frame and in such case switch to the frame/ iframe and then perform the action on the desired web element.
 
 ## 19. Different exceptions in selenium?
-1. No Such Element Exception ->
-2. NoAlertPresentException Exception -> Raised when an expected alert is not present. Happens when trying to interact with an alert that doesn’t exist..
+1. `No Such Element Exception` ->
+2. `NoAlertPresentException Exception` -> Raised when an expected alert is not present. Happens when trying to interact with an alert that doesn’t exist..
 Handle alerts inside a try catch block.
 
 ```java
@@ -272,13 +272,13 @@ A good way to resolve this is to:
 Handle Alerts: Always check for and handle alerts before proceeding with any other interactions.
 Use Try-Catch: Encapsulate actions in a try-catch block and handle alerts if they appear.
 
-3. ElementNotInteractableException ->
+3. `ElementNotInteractableException` ->
    Element Not Interactable Exception is raised when an element is found but is not interactable (e.g., it’s hidden or disabled).
    
 Resolution ->
 The primary resolution method for an ElementNotInteractableException is to ensure that the element is both visible and enabled before interacting with it.
 
-4. No Such window Exeption ->
+4. `No Such window Exception` ->
 
 ## 20. 
 
