@@ -280,7 +280,87 @@ login.click();
 
 4. `No Such window Exception` ->
 
-## 20. 
+## 20. If both implicit and explicit wait is defined, which one will execute first?
+If you have both waits applied then both waits will be applicable in common scenarios.
+
+1. Implicit wait -> driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+   It should throw NoSuchElementException after 30 seconds i.e. implicit wait timeout.
+
+2. Explicit Wait -> WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+   You will see WebDriver will poll at an interval of 500 MS for 10 seconds and will throw timeout exceptions as there is no such element.
+  custom polling interval ->
+  wait.pollingEvery(Duration.ofSeconds(2));
+
+Now WebDriver will poll to check condition on an interval of 2 seconds and terminate after 10 seconds.
+
+#### Let’s mix implicit and explicit wait and observe the behavior.
+First driver will wait for implicit wait, if not found, it will apply explicit wait and keep polling for default interval.
+
+
+## 21. Difference between Selenium 3 and Selenium 4?
+ 
+#### Architecture
+Selenium 4 uses the W3C protocol to standardize communication with browsers, while Selenium 3 uses the JSON wire protocol over HTTP
+
+#### WebDriver Manager
+WebDriver Manager in Selenium 4 automatically downloads the appropriate driver binaries based on the specified browsers, handles the configuration, and ensures compatibility.
+
+#### Options class 
+In Selenium 4, the DesiredCapabilities class has been deprecated, and the Options class has been introduced as a replacement for configuring and customizing the desired capabilities of browsers or browser drivers.
+
+#### Relative Locators 
+Selenium 4 introduces the concept of relative locators, which provide additional flexibility in locating web elements based on their relationship with other elements
+
+#### Exceptions
+1. New Exceptions in Selenium 4.0
+   ElementClickInterceptedException
+   Element Click Intercepted Exception is raised when an element you try to click is not clickable because another element is blocking it
+
+2.  ElementNotInteractableException
+    Element Not Interactable Exception is raised when an element is found but is not interactable (e.g., it’s hidden or disabled).
+
+   `Deprecated exceptions` ->
+   ElementNotVisibleException
+   Status: Deprecated in Selenium 3 and eliminated in Selenium 4.
+
+
+## 22. How to handle shadow dom elements?
+
+## 23. How to handle SSL certificates?
+Create a ChromeOptions object, set the setAcceptInsecureCerts capability to true, and then create a ChromeDriver instance. The browser will then trust invalid certificates.
+
+ ```java
+//Create instance of ChromeOptions Class
+ChromeOptions handlingSSL = new ChromeOptions();
+
+//Using the accept insecure cert method with true as parameter to accept the untrusted certificate
+handlingSSL.setAcceptInsecureCerts(true);
+				
+//Creating instance of Chrome driver by passing reference of ChromeOptions object
+WebDriver driver = new ChromeDriver(handlingSSL);
+```
+
+
+## 24. How does fluent wait work?
+
+## 25. What are cookies? And how do you manage those using Selenium WebDriver? 
+A cookie is a small piece of data that is sent from a website and stored in your computer. Cookies are mostly used to recognise the user and load the stored information.
+It stores information using a key-value pair. It is a small piece of data sent from Web Application and stored in Web Browser, while the user is browsing that website.
+
+driver.manage().addCookie(new Cookie("key", "value"));
+
+Set<Cookie> cookies = driver.manage().getCookies();
+System.out.println(cookies);
+
+## 26. How to switch contexts? What are different contexts available using Selenium WebDriver?
+
+## 27. How can you scroll a page up to a certain element?
+
+## 28. How to switch contexts? What are different contexts available using Selenium WebDriver?
+
+
+
+
 
 
 
