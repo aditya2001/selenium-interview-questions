@@ -257,26 +257,26 @@ login.click();
 ## 19. Different exceptions in selenium?
 1. `No Such Element Exception` ->
 2. `NoAlertPresentException Exception` -> Raised when an expected alert is not present. Happens when trying to interact with an alert that doesn’t exist..
-Handle alerts inside a try catch block.
+    Handle alerts inside a try catch block.
 
-```java
-try {
-Alert alert = driver.switchToAlert();
-}
-catch(){
-System.out.print("No alert present")
-}
-```
-A good way to resolve this is to:
+ ```java
+  try {
+  Alert alert = driver.switchToAlert();
+  }
+  catch(){
+  System.out.print("No alert present")
+  }
+ ```
+   A good way to resolve this is to:
 
-Handle Alerts: Always check for and handle alerts before proceeding with any other interactions.
-Use Try-Catch: Encapsulate actions in a try-catch block and handle alerts if they appear.
+   Handle Alerts: Always check for and handle alerts before proceeding with any other interactions.
+   Use Try-Catch: Encapsulate actions in a try-catch block and handle alerts if they appear.
 
 3. `ElementNotInteractableException` ->
    Element Not Interactable Exception is raised when an element is found but is not interactable (e.g., it’s hidden or disabled).
    
-Resolution ->
-The primary resolution method for an ElementNotInteractableException is to ensure that the element is both visible and enabled before interacting with it.
+   Resolution ->
+   The primary resolution method for an ElementNotInteractableException is to ensure that the element is both visible and enabled before interacting with it.
 
 4. `No Such window Exception` ->
 
