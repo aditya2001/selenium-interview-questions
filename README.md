@@ -27,10 +27,10 @@ Before performing any action on the elements.We have to perform the following st
 
 ## 3. Difference between close() and quit() method ?
 1. close is used to close current browser window
-2. quit is used to close all browser windows.
+2. quit is used to close all opened browser windows.
 
 ## 4. How to initialize driver to run on different browsers ?
-Here we are creating an object of child class and assigning to parent reference variable. This is upcasting.
+Here we are creating an object of child class and assigning to parent reference variable. This is upcasting. We do this so we can run test on multiple browsers.
 ```java
 1. WebDriver driver = new ChromeDriver();
 2. WebDriver driver = new FirefoxDriver();
@@ -167,3 +167,121 @@ Xpath axis are used to find complex elements.
 
 ### 4. Following -> Selects all the elements following the current node.
 //label[text()='Password']//following::input
+
+## 14. Difference between get and navigate method in WebDriver?
+
+1. driver.navigate.to("https://www.google.com");
+2. driver.navigate().refresh();
+3. driver.navigate().back();
+4. driver.navigate().forward();
+
+`get method` -> a) The get() method takes a string URL as a parameter and returns nothing.
+This method opens the specified URL in the current browser window. URL must be in the form of https://www.google.com. If the HTTPS is not included then it will throw a message “Cannot navigate to invalid URL”.
+
+The `getTitle()` method takes nothing as a parameter and returns the page title of the currently loaded web page. If the web page has no title, it will return a null String.
+
+The `getText()` method accepts nothing as a parameter and returns a string value.
+This method is used to retrieve the inner text of the specified element.
+
+`getCssValue() : String`
+The `getCssValue()` method accepts nothing as a parameter and returns a String value.
+This method is used to fetch the value of the CSS property of the given web element when it is invoked.
+
+`getAttribute(String Name) : String`
+a) The getAttribute() method takes the String as a parameter and returns a String value.
+b) It is used to fetch or get the value of the attribute of the WebElement.
+
+`close() : void`
+a) The close method takes nothing as a parameter and returns nothing.
+b) This method is used to close only the browser window that web driver is currently controlling.
+
+`quit() : void`
+a) The quit() method accepts nothing as a parameter and returns nothing.
+b) This method is used to close all windows opened by WebDriver.
+
+### difference between get and navigate method of selenium WebDriver?
+driver.get() used to launch a particular website url, whereas driver.navigate().to() is also used to launch the particular website by passing the URL but we can use forward and backward button to navigate between the pages during test case writing.
+
+Both are exactly same, both are synonyms of each other. In fact navigate.to() method is calling get() method internally.
+
+Get Method takes only string as parameter, whereas navigate can take string as well URL instance as parameters.
+
+## 15. Why do we need to typecast driver object?
+
+
+## 16. How to get size of browser window in selenium?
+Selenium provides a class named Dimension which can be used to get the current size of the browser window and set the new size of the browser window. Size means the height and width of the browser.
+
+```java
+Dimension currentDimension = driver.manage().window().getSize();
+int height = currentDimension.getHeight();
+int width = currentDimension.getWidth();
+System.out.println("Current height: "+ height);
+System.out.println("Current width: "+width);
+```
+
+## 17. How to unselect a checkbox?
+```java
+<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+```
+WebElement element=driver.findElement(By.id("#vehicle1"))
+
+element.click();
+
+## 18. How to handle no element found exception without using try catch or throws?
+Ans - Use explicit wait time.
+
+Here are different ways to handle NoSuchElementException in Selenium:
+NoSuchElementException is thrown by the findElement() method in Selenium WebDriver when the desired web element cannot be located using the specified locator, such as ID, name, CSS Selector, or XPath.
+
+1. `Dynamic values` -> Some web elements are very dynamic in nature. In such cases the specified locator cannot be accessed by Selenium WebDriver as its properties keep on changing causing NoSuchElementException.
+   For example, while automating, the locator value was “//a[@class=’abc_123’]”, however while executing the test the class value got changed to “abc_456”.
+
+We can handle this using contains or starts-with method.
+
+2`element not yet loaded` -> Some elements take time to load as there can be synchronization issues between app and selenium script and therefore we may get no such element exception.
+
+We can handle this using dynamic wait time like explicit wait time.
+```java
+WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(10)
+WebElement login=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='login']")));
+login.click();
+```
+
+3`Incorrect locators`- fix the locator.
+
+4. Use try catch block -> Surround the code block which you feel may throw a NoSuchElementException with a try-catch block.
+
+5. Switch to Frame -> Some web elements are inside frame/ iframe and it is only discovered when you encounter an exception. Always check if the element is inside any frame and in such case switch to the frame/ iframe and then perform the action on the desired web element.
+
+## 19. Different exceptions in selenium?
+1. No Such Element Exception ->
+2. NoAlertPresentException Exception -> Raised when an expected alert is not present. Happens when trying to interact with an alert that doesn’t exist..
+Handle alerts inside a try catch block.
+
+```java
+try {
+Alert alert = driver.switchToAlert();
+}
+catch(){
+System.out.print("No alert present")
+}
+```
+A good way to resolve this is to:
+
+Handle Alerts: Always check for and handle alerts before proceeding with any other interactions.
+Use Try-Catch: Encapsulate actions in a try-catch block and handle alerts if they appear.
+
+3. ElementNotInteractableException ->
+   Element Not Interactable Exception is raised when an element is found but is not interactable (e.g., it’s hidden or disabled).
+   
+Resolution ->
+The primary resolution method for an ElementNotInteractableException is to ensure that the element is both visible and enabled before interacting with it.
+
+4. No Such window Exeption ->
+
+## 20. 
+
+
+
+
