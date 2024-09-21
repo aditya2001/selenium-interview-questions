@@ -325,7 +325,7 @@ In Selenium 4, the DesiredCapabilities class has been deprecated, and the Option
 #### Relative Locators 
 Selenium 4 introduces the concept of relative locators, which provide additional flexibility in locating web elements based on their relationship with other elements
 
-#### Exceptions
+#### New Exceptions
 1. New Exceptions in Selenium 4.0
    ElementClickInterceptedException
    Element Click Intercepted Exception is raised when an element you try to click is not clickable because another element is blocking it
@@ -333,7 +333,7 @@ Selenium 4 introduces the concept of relative locators, which provide additional
 2.  ElementNotInteractableException
     Element Not Interactable Exception is raised when an element is found but is not interactable (e.g., it’s hidden or disabled).
 
-   `Deprecated exceptions` ->
+ #### Deprecated exceptions ->
    ElementNotVisibleException
    Status: Deprecated in Selenium 3 and eliminated in Selenium 4.
 
@@ -359,7 +359,7 @@ WebDriver driver = new ChromeDriver(handlingSSL);
 
 Fluent wait can help you set polling intervals.Fluent wait in Selenium 4 is a more flexible and customizable way of implementing waits in your test automation scripts.
 It's a more flexible type of explicit wait that allows users to define polling intervals, exceptions to ignore, and maximum timeout duration.
-
+```java
 //Declare and initialise a fluent wait
 FluentWait wait = new FluentWait(driver);
 //Specify the timout of the wait
@@ -372,6 +372,7 @@ wait.ignoring(NoSuchElementException.class)
 //This is how we specify the condition to wait on.
 //This is what we will explore more in this chapter
 wait.until(ExpectedConditions.alertIsPresent());
+```
 
 ## 25. What are cookies? And how do you manage those using Selenium WebDriver? 
 A cookie is a small piece of data that is sent from a website and stored in your computer. Cookies are mostly used to recognise the user and load the stored information.
