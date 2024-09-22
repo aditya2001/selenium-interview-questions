@@ -266,7 +266,7 @@ login.click();
 4. `element inside a frame` -> Some web elements are inside frame/ iframe and it is only discovered when you encounter an exception. Always check if the element is inside any frame and in such case switch to the frame/ iframe and then perform the action on the desired web element.
 
 ## 19. Different exceptions in selenium?
-1. `No Such Element Exception` ->
+1. `No Such Element Exception` -> Raised for incorrect locator or when element is not yet loaded.
 2. `NoAlertPresentException Exception` -> Raised when an expected alert is not present. Happens when trying to interact with an alert that doesn’t exist..
     Handle alerts inside a try catch block.
 
@@ -279,9 +279,8 @@ login.click();
   }
  ```
    A good way to resolve this is to:
-
-   Handle Alerts: Always check for and handle alerts before proceeding with any other interactions.
-   Use Try-Catch: Encapsulate actions in a try-catch block and handle alerts if they appear.
+   Always check for and handle alerts before proceeding with any other interactions.
+   Handle Alerts `Use Try-Catch`: Encapsulate actions in a try-catch block and handle alerts if they appear.
 
 3. `ElementNotInteractableException` ->
    Element Not Interactable Exception is raised when an element is found but is not interactable (e.g., it’s hidden or disabled).
@@ -289,19 +288,20 @@ login.click();
    Resolution ->
    The primary resolution method for an ElementNotInteractableException is to ensure that the element is both visible and enabled before interacting with it. Use explicit wait with expected conditions.
 
-4. `No Such window Exception` ->
+4. `No Such window Exception` -> When target window is not present.
 
 ## 20. If both implicit and explicit wait is defined, which one will execute first?
 If you have both waits applied then both waits will be applicable in common scenarios.
 
-1. Implicit wait -> driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+1. `Implicit wait` -> driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
    It should throw NoSuchElementException after 30 seconds i.e. implicit wait timeout.
 
-2. Explicit Wait -> WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+2. `Explicit Wait` -> WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
    You will see WebDriver will poll at an interval of 500 MS for 10 seconds and will throw timeout exceptions as there is no such element.
+  ```java
   custom polling interval ->
   wait.pollingEvery(Duration.ofSeconds(2));
-
+```
 Now WebDriver will poll to check condition on an interval of 2 seconds and terminate after 10 seconds.
 
 #### Let’s mix implicit and explicit wait and observe the behavior.
@@ -311,27 +311,27 @@ First driver will wait for implicit wait, if not found, it will apply explicit w
 ## 21. Difference between Selenium 3 and Selenium 4?
  
 #### Architecture
-Selenium 4 uses the W3C protocol to standardize communication with browsers, while Selenium 3 uses the JSON wire protocol over HTTP
+Selenium 4 uses the `W3C protocol` to standardize communication with browsers, while Selenium 3 uses the JSON wire protocol over HTTP
 
 #### WebDriver Manager
-WebDriver Manager in Selenium 4 automatically downloads the appropriate driver binaries based on the specified browsers, handles the configuration, and ensures compatibility.
+`WebDriverManager` in Selenium 4 automatically downloads the appropriate driver binaries based on the specified browsers, handles the configuration, and ensures compatibility.
 
 #### Options class 
 In Selenium 4, the DesiredCapabilities class has been deprecated, and the Options class has been introduced as a replacement for configuring and customizing the desired capabilities of browsers or browser drivers.
 
 #### Relative Locators 
-Selenium 4 introduces the concept of relative locators, which provide additional flexibility in locating web elements based on their relationship with other elements
+Selenium 4 introduces the concept of `relative locators`, which provide additional flexibility in locating web elements based on their relationship with other elements
 
 #### New Exceptions
 1. New Exceptions in Selenium 4.0
-   ElementClickInterceptedException
+   `ElementClickInterceptedException`
    Element Click Intercepted Exception is raised when an element you try to click is not clickable because another element is blocking it
 
-2.  ElementNotInteractableException
+2.  `ElementNotInteractableException`
     Element Not Interactable Exception is raised when an element is found but is not interactable (e.g., it’s hidden or disabled).
 
  #### Deprecated exceptions ->
-   ElementNotVisibleException
+   `ElementNotVisibleException`
    Status: Deprecated in Selenium 3 and eliminated in Selenium 4.
 
 
@@ -374,11 +374,11 @@ wait.until(ExpectedConditions.alertIsPresent());
 ## 25. What are cookies? And how do you manage those using Selenium WebDriver? 
 A cookie is a small piece of data that is sent from a website and stored in your computer. Cookies are mostly used to recognise the user and load the stored information.
 It stores information using a key-value pair. It is a small piece of data sent from Web Application and stored in Web Browser, while the user is browsing that website.
-
+```java
 driver.manage().addCookie(new Cookie("key", "value"));
-
 Set<Cookie> cookies = driver.manage().getCookies();
 System.out.println(cookies);
+```
 
 ## 26. How to switch contexts? What are different contexts available using Selenium WebDriver?
 
