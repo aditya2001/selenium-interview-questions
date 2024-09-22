@@ -249,13 +249,12 @@ Here are different ways to handle NoSuchElementException in Selenium:
 NoSuchElementException is thrown by the findElement() method in Selenium WebDriver when the desired web element cannot be located using the specified locator, such as ID, name, CSS Selector, or XPath.
 
 1. `Dynamic values` -> Some web elements are very dynamic in nature. In such cases the specified locator cannot be accessed by Selenium WebDriver as its properties keep on changing causing NoSuchElementException.
-   For example, while automating, the locator value was “//a[@class=’abc_123’]”, however while executing the test the class value got changed to “abc_456”.
-
-We can handle this using contains or starts-with method.
+    For example, while automating, the locator value was “//a[@class=’abc_123’]”, however while executing the test the class value got changed to “abc_456”.
+    We can handle this using `contains` or `starts-with` method.
 
 2. `element not yet loaded` -> Some elements take time to load as there can be synchronization issues between app and selenium script and therefore we may get no such element exception.
 
-We can handle this using dynamic wait time like explicit wait time.
+    We can handle this using dynamic wait time like `explicit wait time`.
 ```java
 WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(10)
 WebElement login=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='login']")));
@@ -264,9 +263,7 @@ login.click();
 
 3. `Incorrect locators`- fix the locator.
 
-4. `Use try catch block` -> Surround the code block which you feel may throw a NoSuchElementException with a try-catch block.
-
-5. Switch to Frame -> Some web elements are inside frame/ iframe and it is only discovered when you encounter an exception. Always check if the element is inside any frame and in such case switch to the frame/ iframe and then perform the action on the desired web element.
+4. `element inside a frame` -> Some web elements are inside frame/ iframe and it is only discovered when you encounter an exception. Always check if the element is inside any frame and in such case switch to the frame/ iframe and then perform the action on the desired web element.
 
 ## 19. Different exceptions in selenium?
 1. `No Such Element Exception` ->
@@ -290,7 +287,7 @@ login.click();
    Element Not Interactable Exception is raised when an element is found but is not interactable (e.g., it’s hidden or disabled).
    
    Resolution ->
-   The primary resolution method for an ElementNotInteractableException is to ensure that the element is both visible and enabled before interacting with it.
+   The primary resolution method for an ElementNotInteractableException is to ensure that the element is both visible and enabled before interacting with it. Use explicit wait with expected conditions.
 
 4. `No Such window Exception` ->
 
