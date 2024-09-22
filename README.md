@@ -358,7 +358,7 @@ WebDriver driver = new ChromeDriver(handlingSSL);
 ## 24. How does fluent wait work?
 
 Fluent wait can help you set polling intervals.Fluent wait in Selenium 4 is a more flexible and customizable way of implementing waits in your test automation scripts.
-It's a more flexible type of explicit wait that allows users to define polling intervals, exceptions to ignore, and maximum timeout duration.
+gIt's a more flexible type of explicit wait that allows users to define polling intervals, exceptions to ignore, and maximum timeout duration.
 ```java
 //Declare and initialise a fluent wait
 FluentWait wait = new FluentWait(driver);
