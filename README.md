@@ -377,11 +377,12 @@ WebElement shadowContent = shadowRoot.findElement (By.cssSelector ("#nested_shad
 
 2.
 ```java
-WebElement shadowHost = driver.findElement(By.cssSelector("#shadow_host"));
-JavascriptExecutor jsDriver = (JavascriptExecutor) driver;
-WebElement shadowRoot = (WebElement) jsDriver.executeScript("return arguments[0].shadowRoot", shadowHost);
-WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#shadow_content"));
-Assertions.assertEquals("some text", shadowContent.getText());
+//typecast driver object to javascript executor
+JavascriptExecutor jse = (JavascriptExecutor) driver;
+//execute script will return an object, basically a weblement
+WebElement element = (WebElement) jsDriver.executeScript("return document.querySelector(\"#snacktime\").shadowRoot.querySelector(\"#tea\")");
+String js = "arguments[0].setAttribute('value','Masala Tea')";
+jse.executeScript(js, element);
 ```        
 This code does the same thing as we did in the above steps.
 
@@ -468,6 +469,16 @@ WebDriver driver = new ChromeDriver(options);
 2. Random Alerts - Handle using try catch block.
 3. Dynamic content in HTML - handle using contains or stars-with
 4. Element present inside frame or shadow element.
+
+## 32. How did you handle StaleElementReferenceException ?
+A “StaleElement” reference occurs when we find an element using driver.findElement(), and initially, the element is present, returning a WebElement to the Selenium WebDriver Java implementation. However, when we attempt to interact with the WebElement using methods like click(), sendKeys(), getAttribute(), or getText(), the element suddenly disappears from the Document Object Model (DOM).
+This discrepancy between the presence of the element when initially located and its disappearance when interacted within a fraction of a millisecond or microsecond results in a StaleElementReferenceException.
+
+### How to handle this?
+1. Use WebDriverWait with ExpectedConditions. There is a specific ExpectedCondition called stalenessOf(), which allows you to wait for the staleness of an element to disappear before starting interaction with the WebElement.
+2. Use try catch block.
+
+
 
 
 
