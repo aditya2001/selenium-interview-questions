@@ -381,8 +381,7 @@ WebElement shadowContent = shadowRoot.findElement (By.cssSelector ("#nested_shad
 JavascriptExecutor jse = (JavascriptExecutor) driver;
 //execute script will return an object, basically a weblement
 WebElement element = (WebElement) jsDriver.executeScript("return document.querySelector(\"#snacktime\").shadowRoot.querySelector(\"#tea\")");
-String js = "arguments[0].setAttribute('value','Masala Tea')";
-jse.executeScript(js, element);
+jse.executeScript("arguments[0].value='Masala Tea'", element);
 ```        
 This code does the same thing as we did in the above steps.
 
