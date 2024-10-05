@@ -1,11 +1,18 @@
 # selenium-interview-questions
 
-## 1. What are the various WebDriver methods in selenium?
+## 1. What is Selenium WebDriver?
+Selenium WebDriver is a component of Selenium that helps in automating web browsers.
+
+### 2. Architecture of Selenium?
+![img_4.png](img_4.png)
+
+## 3. What are the various WebDriver methods in selenium?
 ```java
 1. driver.get(url)
 2. driver.switchTo()
 3. driver.getTitle()
 4. driver.getWindowHandles()
+5. driver.getWindowHandle()
 5. driver.getWindowHandle()
 6. driver.close()
 7. driver.quit()
@@ -13,7 +20,7 @@
 9. driver.findElement(By.xpath("//input[@name='uid']"))
 ```
 
-## 2. What are WebElement methods?
+## 4. What are WebElement methods?
 Anything present on the webpage is called as webelement.Like checkbox, textbox, buttons etc
 
 Before performing any action on the elements.We have to perform the following steps
@@ -23,20 +30,30 @@ Before performing any action on the elements.We have to perform the following st
 4. perform action on the element.
 
 ### Methods of WebElement interface-
+1. element.sendKeys("abc")
+2. element.isDisplayed()
+3. element.isSelected()
+4. element.submit()
+5. element.isEnabled()
+6. element.clear()
+7. element.getText()
+8. element.getAttribute("id")
+9. element.click()
+10. element.getTagName()
 
 
-## 3. Difference between close() and quit() method ?
+## 5. Difference between close() and quit() method ?
 1. close is used to close current browser window
 2. quit is used to close all opened browser windows.
 
-## 4. How to initialize driver to run on different browsers ?
+## 6. How to initialize driver to run on different browsers ?
 Here we are creating an object of child class and assigning to parent reference variable. This is upcasting. We do this so we can run test on multiple browsers.
 ```java
 1. WebDriver driver = new ChromeDriver();
 2. WebDriver driver = new FirefoxDriver();
 ```
 
-## 5. What is a Xpath?
+## 7. What is a Xpath?
 Xpath is an expression or syntax to locate an element on the webpage.
 
 Xpath=//tagname[@attribute='value']
@@ -56,7 +73,7 @@ There are two types of XPath:
 1) Absolute XPath - Starts from parent node of DOM, all the way to destination. The key characteristic of XPath is that it begins with the single forward slash(/) ,which means you can select the element from the root node.
 2) Relative XPath - can start from anywhere in the DOM. It starts with double forward slash (//). It can search elements anywhere on the webpage.
 
-## 6. How to search dynamic elements on the webpage?
+## 8. How to search dynamic elements on the webpage?
 We can use contains or stars-with method to find dynamic elements.
 
 ### 1. contains() is a method used in XPath expression.
@@ -77,10 +94,10 @@ Id=” message345″
 <input id="message123">user id must not be blank</label>
 Xpath=//input[starts-with(@id,'message')]
 ```
-## 7. Difference between findElement and findElements in Selenium?
+## 9. Difference between findElement and findElements in Selenium?
 ![img.png](img.png)
 
-## 8. How to find count of links on the webpage?
+## 10. How to find count of links on the webpage?
 ```java
 driver.get("https://www.google.com")
 List<WebElement> ls = driver.findElements(By.tagName("a"));
@@ -90,7 +107,7 @@ System.out.println(ls.size());
    }
 ```
 
-## 9. How to check logo available or not ?
+## 11. How to check logo available or not ?
 ```java
 driver.get("https://www.google.com");
 WebElement element = driver.findElement(By.xpath("//*[@name='logo']"));
@@ -101,7 +118,7 @@ assert.assertTrue(logoPresent);
 2. assertEquals(String ExpectedTitle, String ActualTitle);
 3. assertNotNull(String titleValue);
 
-## 10. How to get element attribute value in selenium ?
+## 12. How to get element attribute value in selenium ?
 ```java
 driver.get("https://www.google.com");
 WebElement element = driver.findElement(By.id("uid"));
@@ -109,7 +126,7 @@ String str = element.getAttribute("value");
 System.out.println(str);
 ```
 
-## 11. How to check page title in selenium ?
+## 13. How to check page title in selenium ?
 ```java
 driver.get("https://www.google.com");
 String str = driver.getTitle();
@@ -123,7 +140,7 @@ System.out.println("Returning Title");
 return driver.getTitle();
 }
 ```
-## 12. How to handle alerts in selenium?
+## 14. How to handle alerts in selenium?
 There are 3 types of javascript popup
 1. Alert - contains only ok button
 2. Confirmation - contains ok and cancel button
@@ -145,7 +162,7 @@ alert.accept();
 driver.switchTo.defaultContent();
 ```
 
-## 13. What are xpath axis?
+## 15. What are xpath axis?
 Xpath axis are used to find complex elements.
 
 ```java
@@ -168,7 +185,7 @@ Xpath axis are used to find complex elements.
 ### 4. Following -> Selects all the elements following the current node.
 //label[text()='Password']//following::input
 
-## 14. Difference between get and navigate method in WebDriver?
+## 16. Difference between get and navigate method in WebDriver?
 
 1. driver.navigate.to("https://www.google.com");
 2. driver.navigate().refresh();
@@ -206,7 +223,7 @@ Both are exactly same, both are synonyms of each other. In fact navigate.to() me
 
 Get Method takes only string as parameter, whereas navigate can take string as well URL instance as parameters.
 
-## 15. Why do we need to typecast driver object?
+## 17. Why do we need to typecast driver object?
 
 ```java
 WebDriver driver = new ChromeDriver();
@@ -223,7 +240,7 @@ Why are we doing typecasting WebDriver instance to JavascriptExecutor or TakesSc
 ![img_2.png](img_2.png)
 
 
-## 16. How to get size of browser window in selenium?
+## 18. How to get size of browser window in selenium?
 Selenium provides a class named Dimension which can be used to get the current size of the browser window and set the new size of the browser window. Size means the height and width of the browser.
 
 ```java
@@ -234,7 +251,7 @@ System.out.println("Current height: "+ height);
 System.out.println("Current width: "+width);
 ```
 
-## 17. How to unselect a checkbox?
+## 19. How to unselect a checkbox?
 ```java
 <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
 ```
@@ -242,7 +259,7 @@ WebElement element=driver.findElement(By.id("#vehicle1"))
 
 element.click();
 
-## 18. How to handle no element found exception without using try catch or throws?
+## 20. How to handle no element found exception without using try catch or throws?
 Ans - Use explicit wait time.
 
 Here are different ways to handle NoSuchElementException in Selenium:
@@ -265,7 +282,7 @@ login.click();
 
 4. `element inside a frame` -> Some web elements are inside frame/ iframe and it is only discovered when you encounter an exception. Always check if the element is inside any frame and in such case switch to the frame/ iframe and then perform the action on the desired web element.
 
-## 19. Different exceptions in selenium?
+## 21. Different exceptions in selenium?
 1. `No Such Element Exception` -> Raised for incorrect locator or when element is not yet loaded.
 2. `NoAlertPresentException Exception` -> Raised when an expected alert is not present. Happens when trying to interact with an alert that doesn’t exist..
     Handle alerts inside a try catch block.
@@ -290,7 +307,7 @@ login.click();
 
 4. `No Such window Exception` -> When target window is not present.
 
-## 20. If both implicit and explicit wait is defined, which one will execute first?
+## 22. If both implicit and explicit wait is defined, which one will execute first?
 If you have both waits applied then both waits will be applicable in common scenarios.
 
 1. `Implicit wait` -> driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -308,7 +325,7 @@ Now WebDriver will poll to check condition on an interval of 2 seconds and termi
 First driver will wait for implicit wait, if not found, it will apply explicit wait and keep polling for default interval.
 
 
-## 21. Difference between Selenium 3 and Selenium 4?
+## 23. Difference between Selenium 3 and Selenium 4?
  
 #### Architecture
 Selenium 4 uses the `W3C protocol` to standardize communication with browsers, while Selenium 3 uses the JSON wire protocol over HTTP
@@ -335,9 +352,44 @@ Selenium 4 introduces the concept of `relative locators`, which provide addition
    Status: Deprecated in Selenium 3 and eliminated in Selenium 4.
 
 
-## 22. How to handle shadow dom elements?
+## 24. How to handle shadow dom elements?
+Shadow DOM acts as a hidden, separate DOM tree attached to an element. The Shadow DOM is not directly accessible through the regular DOM methods provided by Selenium.
 
-## 23. How to handle SSL certificates?
+
+In HTML there can be multiple shadow root sections each section’s shadow properties are completely hidden from the actual Main DOM.
+
+Purpose of Shadow DOM-
+The primary purpose of the Shadow DOM is to encapsulate the internals of a web component, preventing the styles and structure from being affected by external CSS or JavaScript.
+
+We would use the following strategy to access the Shadow DOM locators:
+1. Using Selenium WebDriver getShadowRoot() method in selenium 4.
+2. Using JavaScriptExecutor.
+
+![img_3.png](img_3.png)
+
+1. 
+```java
+<div id = "shadow_host">
+WebElement shadowHost = getDriver().findElement (By.id ("shadow_host"));
+SearchContext shadowRoot = shadowHost.getShadowRoot();
+WebElement shadowContent = shadowRoot.findElement (By.cssSelector ("#nested_shadow_host"));
+```        
+
+2.
+```java
+WebElement shadowHost = driver.findElement(By.cssSelector("#shadow_host"));
+JavascriptExecutor jsDriver = (JavascriptExecutor) driver;
+WebElement shadowRoot = (WebElement) jsDriver.executeScript("return arguments[0].shadowRoot", shadowHost);
+WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#shadow_content"));
+Assertions.assertEquals("some text", shadowContent.getText());
+```        
+This code does the same thing as we did in the above steps.
+
+1. First, we would locate the shadow_host element using its id, after which we would get the Shadow Root element using the getShadowRoot() method.
+2. Next, We would search for the nested_shadow_host element using the cssSelector and get the Shadow Root element using the getShadowRoot() method.
+3. Finally, we would get the “nested text” text using the cssSelector – nested_shadow_content > div.
+
+## 25. How to handle SSL certificates?
 Create a ChromeOptions object, set the setAcceptInsecureCerts capability to true, and then create a ChromeDriver instance. The browser will then trust invalid certificates.
 
  ```java
@@ -352,7 +404,7 @@ WebDriver driver = new ChromeDriver(handlingSSL);
 ```
 
 
-## 24. How does fluent wait work?
+## 26. How does fluent wait work?
 
 Fluent wait can help you set polling intervals.Fluent wait in Selenium 4 is a more flexible and customizable way of implementing waits in your test automation scripts.
 gIt's a more flexible type of explicit wait that allows users to define polling intervals, exceptions to ignore, and maximum timeout duration.
@@ -371,7 +423,7 @@ wait.ignoring(NoSuchElementException.class)
 wait.until(ExpectedConditions.alertIsPresent());
 ```
 
-## 25. What are cookies? And how do you manage those using Selenium WebDriver? 
+## 27. What are cookies? And how do you manage those using Selenium WebDriver? 
 A cookie is a small piece of data that is sent from a website and stored in your computer. Cookies are mostly used to recognise the user and load the stored information.
 It stores information using a key-value pair. It is a small piece of data sent from Web Application and stored in Web Browser, while the user is browsing that website.
 ```java
@@ -380,9 +432,9 @@ Set<Cookie> cookies = driver.manage().getCookies();
 System.out.println(cookies);
 ```
 
-## 26. How to switch contexts? What are different contexts available using Selenium WebDriver?
+## 28. How to switch contexts? What are different contexts available using Selenium WebDriver?
 
-## 27. How can you scroll a page up to a certain element?
+## 29. How can you scroll a page up to a certain element?
 JavaScriptExecutor is an interface that is used to execute JavaScript through selenium webdriver. The JavaScript Executor is a powerful feature of Selenium WebDriver that allows you to execute JavaScript code directly in the browser.
 
 JavaScriptexecutor provides two methods:
@@ -403,7 +455,7 @@ js.executeScript(“arguments[0].scrollIntoView();”, webElement);
 ```
 
 
-## 28. How to handle permission popups in selenium?
+## 30. How to handle permission popups in selenium?
 These are browser popups, generated by browser.
  ```java
 ChromeOptions options = new ChromeOptions();
@@ -411,7 +463,14 @@ options.addArguments("disable-notification");
 WebDriver driver = new ChromeDriver(options);
 ```
 
-## 30. How to handle calendar in selenium?
+## 31. Challenges faced in Selenium automation?
+1. No such element exception - Handle using explicit waits with expected condition.
+2. Random Alerts - Handle using try catch block.
+3. Dynamic content in HTML - handle using contains or stars-with
+4. Element present inside frame or shadow element.
+
+
+
 
 
 
