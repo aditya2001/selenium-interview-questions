@@ -165,25 +165,7 @@ driver.switchTo.defaultContent();
 ## 15. What are xpath axis?
 Xpath axis are used to find complex elements.
 
-```java
-  <div class="group">
-    <label>Password</>
-    <span>
-     <input class="is_required" type="password" id="passwd" name="passwd" value="">
-    </span>
-  </div>
-```
-### 1. Parent -> Selects the parent of the current node
-//input[@id='passwd']//parent::span
-
-### 2. Ancestor -> The ancestor axis selects all ancestors element (grandparent, parent, etc.) of the current node as shown in the below screen.
-//input[@id='passwd']//ancestor::div
-
-### 3. Following-sibling -> Selects the following siblings of the context node. Siblings are at the same level of the current node.
-//label[text()='Password']//following-sibling::span
-
-### 4. Following -> Selects all the elements following the current node.
-//label[text()='Password']//following::input
+Check url for xpath axis - https://github.com/aditya2001/advanced-xpath-locators/blob/master/README.md
 
 ## 16. Difference between get and navigate method in WebDriver?
 
@@ -476,6 +458,116 @@ This discrepancy between the presence of the element when initially located and 
 ### How to handle this?
 1. Use WebDriverWait with ExpectedConditions. There is a specific ExpectedCondition called stalenessOf(), which allows you to wait for the staleness of an element to disappear before starting interaction with the WebElement.
 2. Use try catch block.
+
+## 33. Select class in Selenium?
+Selenium offers select clas which can be used to select value in the drop down list.
+
+![img_5.png](img_5.png)
+
+```java
+// Create object of the Select class
+Select select = new Select(driver.findElement(By.xpath("//*[@id='oldSelectMenu']")));
+select.selectByValue("red");
+```
+
+## 34. Print all dropdown options?
+```java
+WebElement element = driver.findElement("By.name("coffee"));
+Select select = new Select(element);
+List<WebElement> ls = select.getOptions();
+for(WebElement element : ls){
+System.out.println(element.getText());
+}
+We can also use getAllSelectedOptions to print all selected options.
+
+WebElement element = driver.findElement("By.name("coffee2"));
+Select select = new Select(element);
+List<WebElement> ls = select.getOptions();
+select.selectByVisibleText("Sugar");
+select.deselectByVisibleText("Honey");
+
+```
+
+## 35. Write a script to enter textbox value and click using javascript executor?
+
+```java
+//typecast driver object to javascript executor
+JavascriptExecutor jse = (JavascriptExecutor) driver;
+//execute script will return an object, basically a weblement
+WebElement element = driver.findElement(By.xpath("//[@id='email']"));
+jse.executeScript("arguments[0].value='Masala Tea'", element);
+jse.executeScript("arguments[0].click();", element);
+
+
+WebElement element = (WebElement) jsDriver.executeScript("return document.querySelector(\"#snacktime\").shadowRoot.querySelector(\"#tea\")");
+jse.executeScript("arguments[0].value='Masala Tea'", element);
+
+executeScript(script, object)
+
+```
+
+The return type of executeScript can be null, WebElement, String, boolean
+
+1. To click a button without using click() method:
+
+js.executeScript(“arguments[0].click();”, loginButton);
+
+2. To get the Title of a webpage:
+
+String str = js.executeScript(“return document.title;”).toString();
+
+3.To select option from dropdown list:
+
+// set the dropdown value to ‘mango’ using javascript
+
+js.executeScript(“arguments[0].value=’mango’”, listbox);
+
+
+## 36. Actions class in Selenium?
+Actions class is used to handle mouse and keyboard actions. When we are using any methods from actions clas, then it's mandatory to call perform().
+```java
+Actions action = new Actions(driver);
+action.moveToElement(element).perform();
+
+action.dragAndDrop(source,des).perform();
+
+```
+1. moveToElement(WebElement element) – Moves the mouse pointer to the middle of the web element without clicking
+2. contextClick() - Right-click on an element is called as contextClick().
+3. After right click on element, options which are displayed is called as context menus.
+
+![img_6.png](img_6.png)
+
+## 37. Window handling in Selenium?
+
+```java
+String parentWindowId = driver.getWindowHandle();
+Set<String> allWindowsId = driver.getWindowHandles();
+for(String str : allWindowId){
+    if(!parentWindowId.equals(str)){
+      driver.switchTo().window(str);
+      driver.switchTo.defaultContent();
+   }
+}
+```
+
+### 38. Iframe
+
+IFrame is a webpage embedded inside another webpage.
+
+Ways to switch to frame--
+1. Switch to frame by index.
+2. switch to frame by id or name.
+3. switch to frame by webelement.
+
+
+
+
+
+
+
+
+
 
 
 
