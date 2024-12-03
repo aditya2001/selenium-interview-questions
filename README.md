@@ -499,7 +499,7 @@ jse.executeScript("arguments[0].value='Masala Tea'", element);
 jse.executeScript("arguments[0].click();", element);
 
 
-WebElement element = (WebElement) jsDriver.executeScript("return document.querySelector(\"#snacktime\").shadowRoot.querySelector(\"#tea\")");
+WebElement element = (WebElement) jse.executeScript("return document.querySelector(\"#snacktime\").shadowRoot.querySelector(\"#tea\")");
 jse.executeScript("arguments[0].value='Masala Tea'", element);
 
 executeScript(script, object)
@@ -562,6 +562,84 @@ Ways to switch to frame--
 
 
 
+### 39. Selenium WebDriver?
+A Selenium API that directly communicates with the browser to automate tasks.
+
+### 40. Desired Capabilities?
+Allows browser specific properties like platform and version.
+
+```java
+DesiredCapabilities caps = new DesiredCapabilities();
+caps.setBrowserName("chrome");
+caps.setPlatform(Platform.Windows);
+```
+
+### 41 Implicit Wait?
+Default waiting time for all elements
+
+```java
+driver.manage().timeouts().implicitlywait(10, TimeUnit.SECONDS);
+```
+
+### 42. Explicit Wait?
+Wait for specific condition to be true for a specific element-
+
+```java
+WebDriverWait Wait = new WebDriverWait(driver, 20);
+wait.until(ExpectedCondition.visibilityofElementLocated(By.id("login")));
+```
+
+### 43. Fluent Wait?
+Allow setting polling interval and ignoring exception during waiting-
+
+```java
+FluentWait wait = new FluentWait(driver);
+wait.withTimeout(5000, TimeUnit.MILLISECONDS);
+wait.pollingEvery(250, TimeUnit.MILLISECONDS);
+wait.ignoring(NoSuchElementException.class)
+```
+
+### 44. Actions Class?
+Used to interactions, like drag and drop, hovering  etc
+
+```java
+Actions actions = new Actions(driver);
+action.moveToElement(element).perform();
+action.dragAndDrop(source,des).perform();
+```
+
+### 45. JavaScriptExecutor
+
+Executes JavaScript code within the browser.
+
+```java
+JavascriptExecutor jse = (JavascriptExecutor) driver;
+WebElement element = (WebElement) jse.executeScript("return document.querySelector(\"#snacktime\").shadowRoot.querySelector(\"#tea\")");
+jse.executeScript("arguments[0].value='Masala Tea'", element);
+```
+
+### 46. Window Handles
+Manages multiple browser windows
+
+```java
+for(String handle : driver.getWindowHandles()){
+driver.switchTo().window(handle)
+}
+```
+
+### 47. iFrame?
+Allows to switch to specific sections of webpage within a frame.
+
+```java
+driver.switchTo.frame("framename")
+```
+
+### 48. Alert?
+
+```java
+Alert alert = driver.switchTo.alert();
+alert.accept();
+```
 
 
 
