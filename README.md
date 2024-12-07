@@ -641,6 +641,31 @@ Alert alert = driver.switchTo.alert();
 alert.accept();
 ```
 
+### 49. Handling file uploads?
+
+```java
+WebElement upload = driver.findElement(By.id('fileupload));
+upload.sendKeys("C:\\path\\fil.text);
+```
+
+### 50. Shadow DOM?
+Automated elements within a shadow root(hidden DOM)
+
+```java
+JavascriptExecutor js = (JavascriptExecutor) driver;
+WebElement  shadowRoot = (WebElement) js.executeScript("return document.querySelector('shadow-host').shadowRoot);
+```
+
+### 51. Handling HTTP Certificates?
+
+```java
+ChromeOptions options = new ChromeOptions();
+options.setAcceptInsecureCerts(true);
+```
+
+### 52. Keyword driven testing?
+Separates test scripts from keywords to improve reusability.
+Examples like click(), sendKeys() can be mapped to methods.
 
 
 
