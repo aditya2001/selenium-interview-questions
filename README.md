@@ -667,6 +667,13 @@ options.setAcceptInsecureCerts(true);
 Separates test scripts from keywords to improve reusability.
 Examples like click(), sendKeys() can be mapped to methods.
 
+### 53. Selenium Best Practices?
+
+1. Write reusable methods for actions like click, sendKeys in base page abstract class.
+2. Avoid thread.sleep, use dynamic waits.
+3. Use page object model for better maintainability and reusability purpose.
+
+
 
 
 
